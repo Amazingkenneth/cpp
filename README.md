@@ -1,2 +1,3 @@
 # cpp
-Complie and run C++ Codes, in cloudstudio.net
+
+The general settings and online file share
