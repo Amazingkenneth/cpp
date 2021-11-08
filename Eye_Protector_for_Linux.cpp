@@ -1,3 +1,4 @@
+// This version is for Linux.
 #include <bits/stdc++.h>
 using namespace std;
 using namespace std::chrono;
