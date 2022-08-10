@@ -1,6 +1,3 @@
----
-permalink: /vimrc
----
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 
@@ -45,6 +42,7 @@ function MyDiff()
   endif
 endfunction
 
+" The following settings may be useful in OI.
 set ts=2
 color morning
 set guifont=Consolas:h20
