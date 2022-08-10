@@ -1,8 +1,8 @@
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 
-" Mouse behavior (the Unix way)
-behave xterm
+" Mouse behavior (the Windows way)
+behave mswin
 
 " Use the internal diff if available.
 " Otherwise use the special 'diffexpr' for Windows.
@@ -41,54 +41,24 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
-:set clipboard^=unnamed,unnamedplus
-:set guifont=Consolas:h24
-:set guioptions-=T
-:set mouse=a
-:set nocompatible
-:set modifiable
-:set backspace=indent,eol,start
-:set nu
-:set cindent
-:set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,euc-jp,euc-kr,latin1
-" :set encoding=utf-8
-" :set termencoding=utf-8
-:set linespace=-1
-:set linebreak
-:set showmatch
-:set autoread
-:set cursorline
-:set expandtab
-:set shiftwidth=2
-:set softtabstop=-1
-:set smartindent
-:set tabstop=2
-:set t_Co=256
-:set background=light
-:let base16colorspace=256
-:set termguicolors
-:syntax on
-:filetype indent on
-:colorscheme xcode
-:set noundofile
-:set nobackup
-:set viminfo='1000,<1000
-:set nopaste
-:set autochdir
-map <c-b> :call CompileRunGcc()<CR>
-imap <c-b> <Esc> :call CompileRunGcc()<CR>
-map <c-l> :close<CR>
-imap <c-l> <Esc> :close<CR>
-func! CompileRunGcc()
+
+set ts=2
+color morning
+set guifont=Consolas:h20
+set sw=2
+set number
+set cindent
+set expandtab
+set guioptions-=T
+func! Run()
 	exec "w"
+	exec "silent !del %.exe"
 	if &filetype == 'cpp'
-		exec ":silent !del %<.exe"
-		exec ":!g++ -Wall % -o %<"
-    exec ":ter %<"
+		exec "!g++ % -o %<.exe"
+		exec "ter %<.exe"
 	endif
 endfunc
-" Removes trailing spaces
-function! TrimWhiteSpace()
-  %s/\s\+$//e
-endfunction
-autocmd BufWritePre *.cpp :call TrimWhiteSpace()
+map<c-cr> :call Run()<cr>
+imap<c-cr> <esc>:call Run()<cr>
+map<c-l> :close<cr>
+imap<c-l> <esc>:close<cr>
